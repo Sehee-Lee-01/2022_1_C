@@ -18,13 +18,13 @@ int main(){
         cout << "하나\n";
         break;
 			
+	// break 없어서 default까지 실행
     case 2:
         cout << "둘\n";
-        break;
 			
+	// default는 생략 가능
     default:
         cout << "뭐썼니?\n";
-        break;
     }
     return 0;
 }
