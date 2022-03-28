@@ -1,8 +1,10 @@
 /*
-Problem: 주어진 정수의 합 구하기
+Problem: 주어진 정수의 최대, 최소 구하기
 국민대학교 산림환경시스템학과 4학년 20191987 이세희
 */
 #include <iostream>
+#include <algorithm>
+
 using namespace std;
 
 int main(void){
@@ -10,20 +12,21 @@ int main(void){
     int numTestCases;
     cin >> numTestCases;
 
+    int numlist[100];
+
     for(int i=0; i<numTestCases; i++)
     {
-        int numData, data;
-        int sum = 0;
-
+        int numData;
         cin >> numData;
 
         for (int j=0; j<numData; j++)
         {
-            cin >> data;
-            sum += data;
+            cin >> numlist[j];
         }
         // 출력 하기
-        cout << sum << endl;
+        cout << *max_element(numlist, numlist+numData) << " ";
+        cout << *min_element(numlist, numlist+numData) << endl;
+
     }
     return 0;    
 }

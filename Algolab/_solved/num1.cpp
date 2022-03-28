@@ -1,5 +1,5 @@
 /*
-Problem: 주어진 정수의 합 구하기
+Problem: 
 국민대학교 산림환경시스템학과 4학년 20191987 이세희
 */
 #include <iostream>
