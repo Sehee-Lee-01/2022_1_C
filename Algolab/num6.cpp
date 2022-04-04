@@ -18,15 +18,11 @@ int main(void){
         int box[numData][numData];
         int middle = numData/2 + 1;
 
-        for (int j=0; j<numData; j++)
+        for (int j=0; j<middle; j++)
         {
-            for(int m=0; m<numData; m++)
+            for(int m=0; m<middle; m++)
             {
-                if ((abs(j+1-middle)%2 == 1 | abs(m+1-middle)%2 == 1)   ) {
-                    box[j][m] = 1;
-                } else {
                     box[j][m] = 0;
-                }
                 cout << box[j][m];
             }
             cout << endl;
