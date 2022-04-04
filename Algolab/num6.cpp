@@ -12,18 +12,25 @@ int main(void){
 
     for(int i=0; i<numTestCases; i++)
     {
-        int numData, data;
-        int sum = 0;
-
+        int numData;
         cin >> numData;
+       
+        int box[numData][numData];
+        int middle = numData/2 + 1;
 
         for (int j=0; j<numData; j++)
         {
-            cin >> data;
-            sum += data;
+            for(int m=0; m<numData; m++)
+            {
+                if ((abs(j+1-middle)%2 == 1 | abs(m+1-middle)%2 == 1)   ) {
+                    box[j][m] = 1;
+                } else {
+                    box[j][m] = 0;
+                }
+                cout << box[j][m];
+            }
+            cout << endl;
         }
-        // 출력 하기
-        cout << sum << endl;
     }
-    return 0;    
+    return 0;
 }
