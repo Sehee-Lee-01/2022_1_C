@@ -1,5 +1,5 @@
 /*
-Problem: 주어진 정수의 합 구하기
+Problem: 
 국민대학교 산림환경시스템학과 4학년 20191987 이세희
 */
 #include <iostream>
@@ -13,17 +13,14 @@ int main(void){
     for(int i=0; i<numTestCases; i++)
     {
         int numData, data;
-        int sum = 0;
-
         cin >> numData;
 
         for (int j=0; j<numData; j++)
         {
             cin >> data;
-            sum += data;
         }
         // 출력 하기
-        cout << sum << endl;
+        cout << "result" << endl;
     }
     return 0;    
 }

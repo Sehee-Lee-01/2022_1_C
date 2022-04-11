@@ -12,18 +12,22 @@ int main(void){
 
     for(int i=0; i<numTestCases; i++)
     {
-        int numData, data;
-        int sum = 0;
-
-        cin >> numData;
-
-        for (int j=0; j<numData; j++)
-        {
-            cin >> data;
-            sum += data;
+        // 베이스 배열 만들기
+        int arr[100];
+        for (int i=0; i<100; i++){
+            arr[i] = 0;
         }
+
+        int a,b,c,d;
+        cin >> a >> b >> c >> d;
+        for (int i = a-1; i < b-1; i++) arr[i] += 1;
+        for (int i = c-1; i < d-1; i++) arr[i] += 1;
+
+        //int resAnd = count 2;
+        // int resOr = count 1 or 2;
+
         // 출력 하기
-        cout << sum << endl;
+        //cout << resAnd << " " << resOr << endl;
     }
     return 0;    
 }

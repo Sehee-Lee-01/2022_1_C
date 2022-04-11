@@ -12,18 +12,55 @@ int main(void){
 
     for(int i=0; i<numTestCases; i++)
     {
-        int numData, data;
-        int sum = 0;
-
+        int numData;
         cin >> numData;
+
+       // 박스 만들어서 0 채우기
+        char box[numData][numData];
+        int middle = numData/2 + 1;
 
         for (int j=0; j<numData; j++)
         {
-            cin >> data;
-            sum += data;
+            for(int m=0; m<numData; m++)
+            {
+				box[j][m] = '.';
+            }
         }
-        // 출력 하기
-        cout << sum << endl;
+		
+		int top = middle-2;
+		int left = middle-2;
+		int bottom = middle;
+		int right = middle;
+		
+        // 규칙따라 채우기
+		for (int k=0; k < (middle/2);k++){
+			for (int l = left; l<right+1;l++){
+				box[top][l] ='\\';
+				box[bottom][l] ='\\';
+			}
+			
+			for (int l = top+1; l < bottom;l++){
+				box[l][left] ='-';
+				box[l][right] ='-';
+			}
+	
+			top -= 2;
+			left -= 2;
+			bottom += 2;
+			right += 2;
+			
+			if (top < 0) break;
+		}
+		
+        // 출력
+		for (int j=0; j<numData; j++)
+        {
+            for(int m=0; m<numData; m++)
+            {
+				cout << box[j][m];
+            }
+            cout << endl;
+        }
     }
-    return 0;    
+    return 0;
 }
