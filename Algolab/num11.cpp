@@ -3,6 +3,8 @@ Problem: 두 사각형 면적 둘레 구하기
 국민대학교 산림환경시스템학과 4학년 20191987 이세희
 */
 #include <iostream>
+#include <algorithm>
+
 using namespace std;
 
 int main(void){
@@ -19,7 +21,6 @@ int main(void){
                 box[i][j] = 0;
             }
         }
-
         // 사각형 1
         int p1x, p1y, p2x, p2y;
         cin >> p1x >> p1y >> p2x >> p2y;
@@ -41,11 +42,9 @@ int main(void){
             }
             cout << endl;
         }
-
-        int area, round;
         
         // 면적 구하기 
-        // area = 1 개수 - 2 개수;
+        size_t area = count_if(box, box+100, [](int i){ return i == 2 ; });
 
         //둘레 구하기
         // round = 1사각형들 둘레 - 2 사각형 둘레(?);
