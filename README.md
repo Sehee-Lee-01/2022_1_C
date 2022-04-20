@@ -2,6 +2,7 @@
 
 To study C/C++ of 1st semester
 
+# 수업 정리
 ## 2022.03.14
 
 - C/C++ 차이점
@@ -92,4 +93,131 @@ a[n][m] = {...}
   ...
   delete[] pd;
   ```
-  
+
+# gdb 정리 
+## **1. 기본**
+  ### 1-1. gdb 실행
+  ```shell
+  $ gdb (실행파일 이름)
+
+  # ---------- gdb 실행 ---------- #
+
+  (gdb) # 여기에 명령어 입력
+  ```
+  - 아무 것도 안쓰고 엔터를 치면 바로 전에 사용한 명령어가 수행된다.
+  ### 1-2. q
+  - exit gdb
+
+  ### 1-3. help
+  ```shell
+  # 사용법
+  (gdb) help (명령어)
+  ``` 
+  - 명령어 사용법 알려줌
+
+## **2. 코드 실행 관련** 
+### 2-1. l 
+- list a cource file (10 lines)
+- 끊어진 경우 이어서 보고 싶으면 다시 l(그 다음 10 줄). 
+- 중간에 수행하다가 실행할 경우, 현재 수행할 라인 포함 앞 뒤 5줄 보여줌.
+
+### 2-2. r 
+- run (처음부터)
+
+### 2-3. b
+```shell
+# 사용법
+(gdb) b (num)
+``` 
+- set breakpoint at line (num)
+- 이후 r 실행하면 num번째 줄 '시작하기 전'에 멈춤 (num번째 줄은 수행이 안됨)
+- 여러 번 설정 가능
+- 삭제할 때는 'del b'가 아니라 'del break'
+
+### 2-4. n
+- next: execute 1 line
+
+### 2-5. c
+- continue running (멈춘부분 부터)
+- breakpoint가 있다면 거기서 멈추고 없다면 끝까지 수행
+  - breakpoint가 for loop 안에 있을 경우 주의
+
+### 2-6. bt
+- backtrace
+- 현재 멈춘 라인 보여준다. 나온 라인은 아직 수행 안한 상태.
+
+### 2-7. (empty)
+```shell
+(gdb) l
+
+# (gdb) l
+# 바로 전에 썼던 명령어와 비슷한 일 수행
+(gdb) # empty
+```
+
+### 2-8. s
+- 명령어 n과 s 비교
+   1. n 
+    - 명령어 1줄
+   2. s
+    - 함수 안으로 들어가서 그 함수의 첫 번째 수행문에서 멈춤.
+    - 함수에 어떤 파라미터가 들어가는 지 보여준다.
+
+## **3. 데이터 확인**
+### 3-1. p 
+- print a value of expression
+``` shell
+# 사용법
+(gdb) p (argument)
+
+# char arr[10]
+# $n은 gdb 내부 변수
+(gdb) p arr
+$n = "aaaaaaaaaa"
+
+(gdb) p arr[1]
+$n = 97 'a'
+
+(gdb) p &arr[1]
+$n = 0x(임의 주소) "aaaaaaaaa"
+
+# a[10]은 없지만 주소는 계산 가능하다.
+(gdb) p &arr[10]
+$n = 0x(임의 주소) ""
+
+# a[-1]은 없지만 주소는 계산 가능하다.
+(gdb) p &arr[-1]
+$n = 0x(임의 주소) "Uaaaaaaaaaa"
+```
+
+### 3-2. x
+```shell
+# 사용법
+(gdb) x(/FMT) (MemAddr)
+``` 
+- 해당 주소 메모리 내용을 보여준다('Default = 1xw' : 16진수 1 word로 보여줌)
+- FMT 생략 가능(생략할 경우 디폴트 값이나 바로 이전에 썼던 형식으로 출력)
+  - FMT의 구성
+    1. repeat count
+      - Default : 1
+    2. format letter
+      - x(hex), t(binary)...
+      - 띄어쓰기 단위(메모리 저장 방향에 따라 거꾸로 보일 수도 있다.)
+    3. size letter
+      - b(byte), w(word)...
+- 메모리 주소는 gdb 자체 변수도 사용 가능.
+
+### 3-3. info 
+```shell
+# 사용법
+
+# 로컬변수 알아볼 때
+(gdb) info locals
+``` 
+
+### 3-4. disp
+```shell
+# 사용법
+# gdb 수행할때 (??) 값을 계속 추적하라 
+(gdb) disp (??)
+``` 
