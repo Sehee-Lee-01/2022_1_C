@@ -1,10 +1,10 @@
-/* Problem: 
+/* Problem: 요일 계산하기
 국민대학교 산림환경시스템학과 4학년 20191987 이세희 */
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main(void){
-    // 입력 받기
     int numTestCases;
     cin >> numTestCases;
 
@@ -17,8 +17,8 @@ int main(void){
         {
             cin >> data;
         }
-        // 출력 하기
         cout << "result" << endl;
     }
     return 0;    
 }
+
