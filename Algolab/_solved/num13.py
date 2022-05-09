@@ -1,8 +1,3 @@
-'''
-과학과 소프트웨어적 사고
-20191987 이세희
-day class
-'''
 import time
 import sys
 
