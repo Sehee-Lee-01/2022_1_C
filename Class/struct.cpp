@@ -1,4 +1,5 @@
 // class 가 없는 C 스타일
+// 절차지향
 #include <iostream>
 using namespace std;
 
