@@ -2,7 +2,8 @@
 #include <cstdlib> 
 #include "MyComplex.h" 
 void testSimpleCase(); 
-void testDataFromFile();  
+void testDataFromFile(); 
+
 void main(void) 
 {  
     testSimpleCase(); 
@@ -16,14 +17,13 @@ void testSimpleCase() {
 // test copy constructor  
     cout << c3 << endl; 
 // test accessor function  
-    cout << c3 << endl; 
+    cout << c3 << endl;
 // test mutator function 
-     c3.set(3, 3);  cout << c3 << endl; 
-     c3.setRealPart(4); 
-     cout << c3 << endl;  
-     c3.setImaginaryPart(4); 
-     cout << c3 << endl; 
-
+    c3.set(3, 3);  cout << c3 << endl;
+    c3.setRealPart(4); 
+    cout << c3 << endl;  
+    c3.setImaginaryPart(4); 
+    cout << c3 << endl; 
  // test binary operators 
     c4 = c1 + c3; 
     c5 = c1 - c3;  c6 = c4 * c5; 
@@ -77,7 +77,6 @@ void testDataFromFile() {
     c7 = -c6; 
     c8 = (++c7) * 2;   c9 = 2 * (c7++); 
     cout << c7 << " " << c8 << " " << c9 << endl; 
-    
     c7 = ~c6; 
     c8 = (++c7) * 2; 
     c9 = 2 * (c7++); 
