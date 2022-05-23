@@ -22,9 +22,12 @@ public:
     // myComplex& operator =(const myComplex& number); 
     // myComplex& operator =(int value);  
 // Overloading relational operators 
-    // bool operator ==(const myComplex& number) const;      
+    // bool operator ==(const myComplex& number) const;
+    // bool operator >(const myComplex& number) const; //추가     
 // Overloaded unary operators 
-    myComplex operator -();  // unary minus  private: 
-    int realPart; int imaginaryPart; int norm() const; 
+    // myComplex operator -();  // unary minus  private: 
+    int realPart; 
+    int imaginaryPart; 
+    int norm() const; 
 };  
 #endif

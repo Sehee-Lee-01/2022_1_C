@@ -56,15 +56,15 @@
 //     return (realPart == number.realPart) &&  
 //     (imaginaryPart == number.imaginaryPart); 
 // } 
-bool myComplex::operator >(const myComplex& number) const 
-{ 
-    return norm() > number.norm(); 
-} 
+// bool myComplex::operator >(const myComplex& number) const 
+// { 
+//     return norm() > number.norm(); 
+// } 
 // Overloaded unary operators 
-myComplex myComplex::operator -()  // unary minus 
-{ 
-    return myComplex(-realPart, -imaginaryPart); 
- }
+// myComplex myComplex::operator -()  // unary minus 
+// { 
+//     return myComplex(-realPart, -imaginaryPart); 
+//  }
 // private function 
 int myComplex::norm() const { 
     return realPart * realPart + imaginaryPart * imaginaryPart; 
