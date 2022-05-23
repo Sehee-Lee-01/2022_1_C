@@ -31,10 +31,13 @@ public:
 // Overloaded binary operators     
     myComplex operator +(const myComplex& number) const; 
     myComplex operator +(int value) const; 
+    friend myComplex operator+(int vlaue, const myComplex& number);
     myComplex operator -(const myComplex& number) const; 
     myComplex operator -(int value) const;
+    friend myComplex operator-(int vlaue, const myComplex& number);
     myComplex operator *(const myComplex& number) const;
-    myComplex operator *(int value) const;      
+    myComplex operator *(int value) const;
+    friend myComplex operator*(int vlaue, const myComplex& number);      
 // Overloaded assignment operators 
     myComplex& operator =(const myComplex& number); 
     myComplex& operator =(int value);  
@@ -47,6 +50,7 @@ public:
     bool operator <=(const myComplex& number) const;   
 // Overloaded unary operators 
     myComplex operator -();  // unary minus  private: 
+    myComplex operator ~(); 
     int realPart; 
     int imaginaryPart; 
     int norm() const; 

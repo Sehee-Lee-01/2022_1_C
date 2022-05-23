@@ -4,7 +4,7 @@
 void testSimpleCase(); 
 void testDataFromFile(); 
 
-void main(void) 
+int main(void) 
 {  
     testSimpleCase(); 
     testDataFromFile(); 
@@ -25,16 +25,20 @@ void testSimpleCase() {
     c3.setImaginaryPart(4); 
     cout << c3 << endl; 
  // test binary operators 
-    c4 = c1 + c3; 
-    c5 = c1 - c3;  c6 = c4 * c5; 
+    c4 = c1 + c3; // 
+    c5 = c1 - c3;  
+    c6 = c4 * c5; 
     cout << c4 << endl << c5 << endl << c6 << endl; 
     c7 = c6 + 2; 
-    c8 = c6 - 2;  c9 = c6 * 2; 
+    // c8 = c6 - 2;  
+    c9 = c6 * 2; 
     cout << c7 << endl << c8 << endl << c9 << endl;
     c7 += c4; 
     c8 -= c5; 
-    c9 *= c6;  cout << c7 << endl << c8 << endl << c9 << endl;    
-    c7 += 2;  c8 -= 2; 
+    c9 *= c6;  
+    cout << c7 << endl << c8 << endl << c9 << endl;    
+    c7 += 2;  
+    c8 -= 2; 
     c9 *= 2; 
     cout << c7 << endl << c8 << endl << c9 << endl;  
  // test comparison operators 

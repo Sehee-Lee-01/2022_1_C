@@ -4,11 +4,13 @@ myComplex::myComplex(int real, int imag) {
     realPart = real; 
     imaginaryPart = imag; 
 }  
+
 // Copy constructor 
 myComplex::myComplex(const myComplex& number) {
     realPart = number.realPart; 
     imaginaryPart = number.imaginaryPart; 
 } 
+
 // Accessor functions 
 int myComplex::getRealPart() const {
     return realPart;
@@ -28,6 +30,7 @@ void myComplex::set(int real, int imag) {
     realPart = real; 
     imaginaryPart = imag; 
 }
+
 // ++
 myComplex& myComplex:: operator++(){ re++; return *this;}
 myComplex myComplex::operator++(int){myComplex t(*this); operator++(); return t;} 
@@ -36,6 +39,7 @@ myComplex myComplex::operator--(int){myComplex t(*this); operator--(); return t;
 myComplex& myComplex::operator+=(const myComplex& c){re+= c.realPart; im+= c.imaginaryPart; return *this;}
 myComplex& myComplex::operator-=(const myComplex& c){re-= c.realPart; im-= c.imaginaryPart; return *this;}
 myComplex& myComplex::operator*=(const myComplex& c){re*= c.realPart; im*= c.imaginaryPart; return *this;}
+
 // Overloaded binary operators 
 myComplex myComplex::operator +(const myComplex& number) const 
 { 
@@ -47,6 +51,10 @@ myComplex myComplex::operator +(int value) const
 { 
     return myComplex(value) + (*this); 
 }
+myComplex operator+(int value, const myComplex& number){
+    myComplex result(value + number.realPart, number.imaginaryPart);
+    return result;
+}
 myComplex myComplex::operator -(const myComplex& number) const 
 { 
     int newReal = realPart - number.realPart;  
@@ -56,6 +64,10 @@ myComplex myComplex::operator -(const myComplex& number) const
 myComplex myComplex::operator -(int value) const 
 { 
     return myComplex(value) - (*this); 
+}
+myComplex operator-(int value, const myComplex& number){
+    myComplex result(value - number.realPart, - number.imaginaryPart);
+    return result;
 }
 myComplex myComplex::operator *(const myComplex& number) const 
 { 
@@ -69,6 +81,11 @@ myComplex myComplex::operator *(int value) const
 { 
     return myComplex(value) * (*this); 
 }    
+myComplex operator*(int value, const myComplex& number){
+    myComplex result(value * number.realPart, value * number.imaginaryPart);
+    return result;
+}
+
 // Assignment operators 
 myComplex& myComplex::operator =(const myComplex& number) 
 { 
@@ -81,6 +98,7 @@ myComplex& myComplex::operator =(int value)
     imaginaryPart = 0; 
     return *this; 
  } 
+
 // Overloading comparison operators 
 bool myComplex::operator ==(const myComplex& number) const 
 {  
@@ -108,11 +126,17 @@ bool myComplex::operator <=(const myComplex& number) const
 { 
     return norm() <= number.norm(); 
 } 
+
 // Overloaded unary operators 
 myComplex myComplex::operator -()  // unary minus 
 { 
     return myComplex(-realPart, -imaginaryPart); 
  }
+ myComplex myComplex::operator ~()
+{ 
+    return myComplex(realPart, -imaginaryPart); 
+ }
+
 // private function 
 int myComplex::norm() const { 
     return realPart * realPart + imaginaryPart * imaginaryPart; 
