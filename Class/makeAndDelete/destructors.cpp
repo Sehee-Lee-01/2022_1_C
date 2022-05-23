@@ -4,15 +4,13 @@ using namespace std;
 class A {
     int p;
 public:
-    /*
-    A () {
-        cout << "A() called\n";
-    }
-    */
-    // 디폴트 파라미터가 있기 때문에 디폴트 생성자가 된다.(자동 생성 되지 않는다.)
     A(int v = 0){
-        cout << "A(int) called\n";
+        cout << this << " : A(int) called\n";
         p = v;
+    }
+    // 없음 자동생성
+    ~A(){
+        cout << this << " : ~A() called\n";
     }
     int getP(){
         return p;

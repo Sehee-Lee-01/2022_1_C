@@ -5,20 +5,19 @@ using namespace std;
 
 int main(void){
     // 입력 받기
-    int numTestCases;
-    cin >> numTestCases;
+    int t;
+    cin >> t;
 
-    for(int i=0; i<numTestCases; i++)
+    for(int i=0; i<t; i++)
     {
-        int numData, data;
-        cin >> numData;
-
-        for (int j=0; j<numData; j++)
+        int n, s, t, black, white;
+        cin >> n;
+        for (int j=0; j<n; j++)
         {
-            cin >> data;
+            cin >> s >> t;
         }
         // 출력 하기
-        cout << "result" << endl;
+        cout << black << " "<< white << endl;
     }
     return 0;    
 }

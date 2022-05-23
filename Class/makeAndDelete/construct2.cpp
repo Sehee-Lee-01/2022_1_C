@@ -9,11 +9,10 @@ public:
         cout << "A() called\n";
     }
     */
-    // 디폴트 파라미터가 있기 때문에 디폴트 생성자가 된다.(자동 생성 되지 않는다.)
-    A(int v = 0){
-        cout << "A(int) called\n";
-        p = v;
-    }
+    // A(int v = 0){
+    //     cout << "A(int) called\n";
+    //     p = v;
+    // }
     int getP(){
         return p;
     }
@@ -21,9 +20,9 @@ public:
         p = (v<0) ? 0 : v;
     }
 };
-
+A a2; // 전역 변수 (0 초기화된다.)
 int main(){
-    A a1, a2(10);
+    A a1; // 지역변수
     cout << a1.getP() << endl;
     cout << a1.getP() << endl;
 }
