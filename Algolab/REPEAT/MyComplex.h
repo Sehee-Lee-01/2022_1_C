@@ -8,9 +8,6 @@ class myComplex {
 public: 
 // Constructor (생성자)     
     myComplex(int real = 0, int imag = 0); 
-    ~myComplex(){}
-    int real() {return re;}
-    int imag() {return im;}
 // Copy constructor (복사 생성자) 
     myComplex(const myComplex& number); 
 // Accessor functions (접근자) 
@@ -25,9 +22,12 @@ public:
     myComplex operator++(int);
     myComplex& operator--();
     myComplex operator--(int); 
-    myComplex& operator+=(const myComplex& c);
-    myComplex& operator-=(const myComplex& c);
-    myComplex& operator*=(const myComplex& c);
+    myComplex& operator +=(const myComplex& number);
+    myComplex& operator +=(int value);
+    myComplex& operator -=(const myComplex& number);
+    myComplex& operator -=(int value);
+    myComplex& operator *=(const myComplex& number);
+    myComplex& operator *=(int value);
 // Overloaded binary operators     
     myComplex operator +(const myComplex& number) const; 
     myComplex operator +(int value) const; 
