@@ -61,27 +61,36 @@ myPolynomial myPolynomial::operator +(const myPolynomial &poly) const
     int coeffList[expList.size()], i=0;
     for(myTerm element : termList){expList.push_back(element.exp);}
     for(myTerm element : poly.termList){expList.push_back(element.exp);}
-    expList.unique(); 
     expList.sort(); 
+    expList.unique(); 
     expList.reverse();
+    int numExp = expList.size();
+    int mono[2*numExp];
+
     for (int exp: expList)
     {
-        int coeff1, coeff2;
+        int coeff1=0, coeff2=0;
         for(myTerm element : termList) {if(exp == element.exp) coeff1 = element.coeff;}
         for(myTerm element : poly.termList) {if(exp == element.exp) coeff2 = element.coeff;}
         coeffList[i] = coeff1 + coeff2;
+        // cout << endl <<"exp" << i << " : "<< exp << endl;
+        // cout << " coeff1: " << coeff1 << endl <<" coeff2: " << coeff2 << endl;
+        // cout << "coeffList["<<i<<"]: " << coeffList[i] << endl;
         i++;
     } 
-
-    int mono[expList.size()*2];
+    // cout << "(***)coeffList[0]: " << coeffList[0] << endl;
+    // // int mono[2*numExp]; 
+    // 왜 갑자기 coeffList[0] = 10으로 바뀔가요..?
+    // cout << "(***)coeffList[0]: " << coeffList[0] << endl;
     list<int>::iterator iter = expList.begin();
-    for (i=0;i<expList.size();i++)
+    for (i=0;i<numExp;i++)
     {
+        // cout << "coeffList["<<i<<"]: " << coeffList[i] << " *iter: " << *iter << endl; 
         mono[2*i] = coeffList[i];
         mono[2*i+1] = *iter;
         iter++;
     }
-    return myPolynomial(expList.size(),mono);
+    return myPolynomial(numExp,mono);
 }
 myPolynomial myPolynomial::operator -(const myPolynomial &poly) const
 {
@@ -98,11 +107,13 @@ myPolynomial myPolynomial::operator *(const myPolynomial &poly) const
         for(myTerm element2 : poly.termList) 
             expList.push_back(element1.exp + element2.exp); 
     }
-    expList.unique(); 
     expList.sort();
+    expList.unique(); 
     expList.reverse();
-    int coeffList[expList.size()];
-    for (int i=0;i<expList.size();i++) coeffList[i]=0;
+    int numExp = expList.size();
+    int mono[2*numExp];
+    int coeffList[numExp];
+    for (int i=0;i<numExp;i++) coeffList[i]=0;
     int i=0;
     for(int exp : expList)
     {
@@ -114,18 +125,22 @@ myPolynomial myPolynomial::operator *(const myPolynomial &poly) const
                     coeffList[i] += element1.coeff*element2.coeff;
             }
         }
+        // cout << endl <<"exp" << i << " : "<< exp << endl;
+        // cout << "coeffList["<<i<<"]: " << coeffList[i] << endl;
         i++;
     }
     
-    int mono[expList.size()*2];
+    // int mono[numExp*2];
+    // cout << "(***)coeffList[0]: " << coeffList[0] << endl;
     list<int>::iterator iter = expList.begin();
-    for (i=0;i<expList.size();i++)
+    for (i=0;i<numExp;i++)
     {
+        // cout << "coeffList["<<i<<"]: " << coeffList[i] << " *iter: " << *iter << endl; 
         mono[2*i] = coeffList[i];
         mono[2*i+1] = *iter;
         iter++;
     }
-    return myPolynomial(expList.size(),mono);
+    return myPolynomial(numExp,mono);
 }
 myPolynomial myPolynomial::operator *(int k) const
 {
@@ -234,6 +249,7 @@ ostream& operator <<(ostream &outStream, const myPolynomial& poly)
         {
             if((poly.termList.front() == element) || (element.getCoeff() < 0)) 
                 outStream << element;
+                
             else 
             {
                 if (element.getCoeff() != 0)
