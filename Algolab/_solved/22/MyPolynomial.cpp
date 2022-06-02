@@ -58,13 +58,13 @@ myPolynomial myPolynomial::ddx() const
 myPolynomial myPolynomial::operator +(const myPolynomial &poly) const
 {
     list<int> expList;
-    int coeffList[expList.size()], i=0;
     for(myTerm element : termList){expList.push_back(element.exp);}
     for(myTerm element : poly.termList){expList.push_back(element.exp);}
     expList.sort(); 
     expList.unique(); 
     expList.reverse();
     int numExp = expList.size();
+    int coeffList[numExp], i=0;
     int mono[2*numExp];
 
     for (int exp: expList)
@@ -251,12 +251,8 @@ ostream& operator <<(ostream &outStream, const myPolynomial& poly)
                 outStream << element;
                 
             else 
-            {
                 if (element.getCoeff() != 0)
-                {
                     outStream << "+" << element;
-                }
-            }
         }
         return outStream;
     }
